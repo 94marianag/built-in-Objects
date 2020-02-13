@@ -10,8 +10,10 @@ myFunc('myString');
 */ 
 
 /*------------------------------ Solución ------------------------------------------- */
-
-
+function myFunc(cadena){
+    console.log(cadena.length)
+}
+myFunc("Había una vez un barco chiquito");
 
 /*----------------------------------------------------------------------------------- */
 
@@ -33,7 +35,15 @@ b) el número ahora es un entero con valor de (valor) ;)
 
 /*------------------------------ Solución ------------------------------------------- */
 
-
+function myFunc(numero){
+    if(Number.isInteger(numero)){
+      console.log(numero + 'es un entero');
+    }
+    else{
+      console.log("El numero ahora es un entero con valor de " + Number.parseInt(numero));
+    }
+  }
+ myFunc(3.4);
 
 /*----------------------------------------------------------------------------------- */
 
@@ -51,8 +61,10 @@ expected result:  4 caracteres.
 */
 
 /*------------------------------ Solución ------------------------------------------- */
-
-
+function myFunc(boolean){
+  console.log(boolean.toString().length)
+}
+myFunc(true);
 
 /*----------------------------------------------------------------------------------- */
 
@@ -70,9 +82,16 @@ myFunc(obj);
 */ 
 
 /*------------------------------ Solución ------------------------------------------- */
+let usuario = {
+    name: "Admin",
+    email: "admin@gmail.com",
+    password: "admin123"
+}
 
-
-
+function  myFunc(objeto){
+    console.log(Object.keys(usuario).length, Object.keys(usuario), Object.values(usuario))
+}
+myFunc(usuario);
 /*----------------------------------------------------------------------------------- */
 
 
@@ -90,7 +109,11 @@ result: 3.
 */ 
 
 /*------------------------------ Solución ------------------------------------------- */
-
+var sum = new Function('a','b','c', 'return a + b + c');
+function myFunc(fn){
+  console.log(fn.length);
+}
+myFunc(sum);
 
 
 /*----------------------------------------------------------------------------------- */
@@ -114,7 +137,25 @@ myFunc(arr, 3, 'apple');
 
 /*------------------------------ Solución ------------------------------------------- */
 
+let fruits = ["Banana", "Apple"];
 
+function myFunc(array, desiredLength, template) {
+ 
+  let diferencia = desiredLength - array.length;
+
+  if(diferencia === 1){
+    array.push(template);
+    console.log(array)
+  }
+else if (diferencia > 1){
+  console.log("El array es mayor por: " + Math.abs(diferencia))
+}
+ 
+else{
+  console.log("El array es menor por: " + Math.abs(diferencia))
+}
+}
+myFunc(fruits, 3, "apple");
 
 /*----------------------------------------------------------------------------------- */
 
@@ -129,7 +170,12 @@ myFunc();
 */
 
 /*------------------------------ Solución ------------------------------------------- */
-
+function date(){
+  var today = new Date();
+  console.log(today.toISOString());
+  console.log(Date.now());
+  }
+  date();
 
 
 /*----------------------------------------------------------------------------------- */
@@ -149,8 +195,11 @@ result = 9;
 */
 
 /*------------------------------ Solución ------------------------------------------- */
-
-
+function myFunc(base, exponente) {
+  var absoluto = Math.abs(base);
+  console.log(Math.pow(absoluto, exponente));
+}
+myFunc(-3, 2);
 
 /*----------------------------------------------------------------------------------- */
 
@@ -169,8 +218,16 @@ myFunc(str, template)
 */
 
 /*------------------------------ Solución ------------------------------------------- */
-
-
+var rg = new RegExp(/([A-Z])/);
+function regex(str, template) {
+    if (rg.test(str)) {
+        newstring = str.replace(rg, template);
+        console.log(newstring);
+        return;
+    }
+    console.log("No encuentro coincidencias");
+}
+regex("nombre", "Ja");
 
 /*----------------------------------------------------------------------------------- */
 
@@ -187,7 +244,14 @@ Ex: myFunc(number)
 
 /*------------------------------ Solución ------------------------------------------- */
 
-
+function myFunc(number){
+  if (number <= 10){
+      console.log("El valor esta dentro de los parametros");
+      return
+  }
+  throw new Error("El valor esta fuera de los parametros");
+}
+myFunc(8);
 
 /*----------------------------------------------------------------------------------- */
 
@@ -197,9 +261,41 @@ Ex: myFunc(number)
 Usar los objetos vistos en clase y aplicarlos para solucionar un escenario que pueda ocurrir 
 entre los proyectos finales que tienen asignados.
 
-Describir el caso:
+Describir el caso: Crear una función que reciba un array de objects de estaciones de radio, 
+que al ser llamada haga un console.log mostrando:
+* La cantidad de estaciones
+* El valor de de id y titulo de estacion.
+
+Ex:
+myFunc(obj);
 
 Mostrar la solucíon en código:
-
-
 */
+let estaciones = [{
+  id: 1,
+  title: "La mejor estacion de Pop",
+  description: "musica pop",
+  genre: "pop",
+  created_at: Date,
+},
+{
+  id: 2,
+  title: "Solo Rock",
+  description: "La mejor musica de rock",
+  genre: "rock",
+  created_at: Date,
+},
+{
+  id: 3,
+  title: "Viejitas pero bonitas",
+  description: "Musica oldie pero no tanto",
+  genre: "disco",
+  created_at: Date,
+}]
+
+function  myFunc(arrayObjetos){
+console.log(arrayObjetos.length)
+console.log(Object.values(estaciones))
+}
+myFunc(estaciones);
+
